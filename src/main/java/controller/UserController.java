@@ -21,7 +21,7 @@ public class UserController {
     }
 
     @GetMapping()
-    public String findAll(Model model) {
+    public String findAll(Model model) { // Отображение пользователей
         List<User> users = userService.getUsers();
         model.addAttribute("user", users);
         return "users";
