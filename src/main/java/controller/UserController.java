@@ -21,7 +21,7 @@ public class UserController {
     }
 
     @GetMapping()
-    public String findAll(Model model) { // Отображение пользователей
+    public String findAll(Model model) { //
         List<User> users = userService.getUsers();
         model.addAttribute("user", users);
         return "users";
@@ -45,19 +45,15 @@ public class UserController {
         return "/user";
     }
 
-
-
     @DeleteMapping  ("/{id}")
     public String deleteUser(@PathVariable("id") Long id) {
-        userService.deleteUser(id);
+        userService.deleteUser(Math.toIntExact(id));
         return "redirect:/users";
     }
 
-
-
     @GetMapping("/{id}/edit")
     public String editUsers(@PathVariable("id") long id, Model model) {
-        model.addAttribute("user", userService.getUserById(id));
+        model.addAttribute("user", userService.getUserById((int) id));
         return "/edit";
     }
     @PostMapping("/{id}")

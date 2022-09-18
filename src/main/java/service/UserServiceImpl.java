@@ -8,8 +8,6 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-
-
     private final UserRepository userRepository;
 
     public UserServiceImpl(UserRepository userRepository) {
@@ -25,13 +23,21 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
-    public void deleteUser (long id) {
+    @Override
+    public void deleteUser(int id) {
+    }
 
+    @Override
+    public User getUserById(int id) {
+        return null;
+    }
+
+    public void deleteUser (long id) {
         userRepository.delete(getUserById(id));
     }
 
     public User getUserById (long id) {
-        return userRepository.findById(id).orElse(null);  // или другой метод??
+        return userRepository.findById(id).orElse(null);
     }
 
     public List<User> getUsers() {
